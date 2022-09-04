@@ -24,7 +24,7 @@ export default {
         name: 'dns.api.cf',
         description: 'DNS API',
         url: 'https://dns.api.cf',
-        api: 'https://dns.api.cf/example.com',
+        api: 'https://dns.api.cf/api',
         endpoints: {
           dns: 'https://dns.api.cf/:domain',
         },
