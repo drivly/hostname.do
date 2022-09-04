@@ -21,15 +21,15 @@ export default {
     return new Response(JSON.stringify({ 
       api: {
         icon: '🔎',
-        name: 'dns.api.cf',
-        description: 'DNS API',
-        url: 'https://dns.api.cf',
-        api: 'https://dns.api.cf/api',
+        name: 'hostnames.do',
+        description: 'Hostname DNS API',
+        url: 'https://hostnames.do',
+        api: 'https://hostnames.do/api',
         endpoints: {
-          dns: 'https://dns.api.cf/:domain',
+          dns: 'https://hostnames.do/:domain',
         },
         type: 'https://apis.do/data',
-        repo: 'https://github.com/drivly/dns.api.cf',
+        repo: 'https://github.com/drivly/hostnames.do',
       },
       dns: {
         domain,
