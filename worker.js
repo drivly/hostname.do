@@ -1,21 +1,21 @@
 export default {
   fetch: async (req) => {
     const { pathname } = new URL(req.url)
-    const domain = pathname.replace("/", "") ?? "example.com"
+    const domain = pathname.replace('/', '') ?? 'example.com'
     console.log(domain)
     const data = await Promise.all([
-      fetch("https://cloudflare-dns.com/dns-query?type=NS&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=A&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=AAAA&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=CNAME&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=MX&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=SOA&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=TXT&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=PTR&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=SRV&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=CERT&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=DCHID&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
-      fetch("https://cloudflare-dns.com/dns-query?type=DNAME&name=" + domain, { headers: { accept: "application/dns-json" } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=NS&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=A&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=AAAA&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=CNAME&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=MX&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=SOA&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=TXT&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=PTR&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=SRV&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=CERT&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=DCHID&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
+      fetch('https://cloudflare-dns.com/dns-query?type=DNAME&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
     ])
     return new Response(JSON.stringify({ 
       domain,
