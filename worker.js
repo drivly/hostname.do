@@ -1,7 +1,8 @@
 export default {
   fetch: async (req) => {
+    const { user, redirect, body } = await env.CTX.fetch(req).then(res => res.json())
     const { pathname } = new URL(req.url)
-    const domain = pathname.replace('/', '') ?? 'example.com'
+    const domain = pathname.replace('/', '').replace(':domain','example.com') ?? 'example.com'
     console.log(domain)
     const data = await Promise.all([
       fetch('https://cloudflare-dns.com/dns-query?type=NS&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
@@ -18,20 +19,35 @@ export default {
       fetch('https://cloudflare-dns.com/dns-query?type=DNAME&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
     ])
     return new Response(JSON.stringify({ 
-      domain,
-      url: 'https://' + domain,
-      NS: data[0].Answer?.map(({data}) => data), 
-      A: data[1].Answer?.map(({data}) => data), 
-      AAAA: data[2].Answer?.map(({data}) => data), 
-      CNAME: data[3].Answer?.map(({data}) => data), 
-      MX: data[4].Answer?.map(({data}) => data),
-      SOA: data[5].Answer?.map(({data}) => data),
-      TXT: data[6].Answer?.map(({data}) => data),
-      PTR: data[7].Answer?.map(({data}) => data),
-      SRV: data[8].Answer?.map(({data}) => data),
-      CERT: data[9].Answer?.map(({data}) => data),
-      DCHID: data[10].Answer?.map(({data}) => data),
-      DNAME: data[11].Answer?.map(({data}) => data),
+      api: {
+        icon: '🔎',
+        name: 'dns.api.cf',
+        description: 'DNS API',
+        url: 'https://dns.api.cf',
+        api: 'https://dns.api.cf/example.com',
+        endpoints: {
+          parse: origin + '/:domain',
+        },
+        type: 'https://utilities.do',
+        repo: 'https://github.com/drivly/dns.api.cf',
+      },
+      dns: {
+        domain,
+        url: 'https://' + domain,
+        NS: data[0].Answer?.map(({data}) => data), 
+        A: data[1].Answer?.map(({data}) => data), 
+        AAAA: data[2].Answer?.map(({data}) => data), 
+        CNAME: data[3].Answer?.map(({data}) => data), 
+        MX: data[4].Answer?.map(({data}) => data),
+        SOA: data[5].Answer?.map(({data}) => data),
+        TXT: data[6].Answer?.map(({data}) => data),
+        PTR: data[7].Answer?.map(({data}) => data),
+        SRV: data[8].Answer?.map(({data}) => data),
+        CERT: data[9].Answer?.map(({data}) => data),
+        DCHID: data[10].Answer?.map(({data}) => data),
+        DNAME: data[11].Answer?.map(({data}) => data),
+      },
+      user,
     }, null, 2))
   }
 }
