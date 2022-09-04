@@ -1,5 +1,5 @@
 export default {
-  fetch: async (req) => {
+  fetch: async (req, env) => {
     const { user, redirect, body } = await env.CTX.fetch(req).then(res => res.json())
     const { pathname } = new URL(req.url)
     const domain = pathname.replace('/', '').replace(':domain','example.com') ?? 'example.com'
