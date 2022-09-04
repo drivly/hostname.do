@@ -1,4 +1,4 @@
-# dns.api.cf
-DNS Lookup API
+# hostnames.do
+Hostname DNS API
 
 <https://hostnames.do/google.com>
