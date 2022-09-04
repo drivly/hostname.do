@@ -1,7 +1,7 @@
 export default {
   fetch: async (req, env) => {
     const { user, redirect, body } = await env.CTX.fetch(req).then(res => res.json())
-    const { pathname } = new URL(req.url)
+    const { origin, hostname, pathname } = new URL(req.url)
     const domain = pathname.replace('/', '').replace(':domain','example.com') ?? 'example.com'
     console.log(domain)
     const data = await Promise.all([
@@ -26,9 +26,9 @@ export default {
         url: 'https://dns.api.cf',
         api: 'https://dns.api.cf/example.com',
         endpoints: {
-          parse: origin + '/:domain',
+          dns: 'https://dns.api.cf/:domain',
         },
-        type: 'https://utilities.do',
+        type: 'https://apis.do/data',
         repo: 'https://github.com/drivly/dns.api.cf',
       },
       dns: {
