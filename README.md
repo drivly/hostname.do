@@ -1,4 +1,4 @@
 # dns.api.cf
 DNS Lookup API
 
-<https://dns.api.cf/cloudflare.com>
+<https://hostnames.do/cloudflare.com>
