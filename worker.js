@@ -21,15 +21,15 @@ export default {
     return new Response(JSON.stringify({ 
       api: {
         icon: '🔎',
-        name: 'hostnames.do',
+        name: 'hostname.do',
         description: 'Hostname DNS API',
-        url: 'https://hostnames.do',
-        api: 'https://hostnames.do/api',
+        url: 'https://hostname.do',
+        api: 'https://hostname.do/api',
         endpoints: {
-          dns: 'https://hostnames.do/:domain',
+          dns: 'https://hostname.do/:domain',
         },
         type: 'https://apis.do/data',
-        repo: 'https://github.com/drivly/hostnames.do',
+        repo: 'https://github.com/drivly/hostname.do',
       },
       dns: {
         domain,
