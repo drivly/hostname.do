@@ -19,7 +19,7 @@ export default {
       fetch('https://cloudflare-dns.com/dns-query?type=DNAME&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
     ])
     
-    const available = data[0].Answer ? undefined : await fetch(env.AVAILABLE_URL + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json())
+    const available = data[0].Answer ? undefined : await fetch(env.AVAILABLE_URL + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.text()).then(val => val.split('\n')[].split(':')[1])
           
     return new Response(JSON.stringify({ 
       api: {
