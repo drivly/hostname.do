@@ -1,4 +1,4 @@
 # hostnames.do
 Hostname DNS API
 
-<https://hostnames.do/google.com>
+<https://hostname.do/google.com>
