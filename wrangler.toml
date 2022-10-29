@@ -1,6 +1,6 @@
 name = "dns-api-cf"
 account_id = "b6641681fe423910342b9ffa1364c76d"
-route = { pattern = "*/*", zone_id = "3878c6d2c09990a221d1f78047b17d3f" }
+# route = { pattern = "*/*", zone_id = "3878c6d2c09990a221d1f78047b17d3f" }
 main = "worker.js"
 usage_model = "unbound"
 compatibility_date = "2022-08-23"
