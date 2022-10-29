@@ -18,6 +18,9 @@ export default {
       fetch('https://cloudflare-dns.com/dns-query?type=DCHID&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
       fetch('https://cloudflare-dns.com/dns-query?type=DNAME&name=' + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json()),
     ])
+    
+    const available = data[0].Answer ? undefined : await fetch(env.AVAILABLE_URL + domain, { headers: { accept: 'application/dns-json' } }).then((res) => res.json())
+          
     return new Response(JSON.stringify({ 
       api: {
         icon: '🔎',
@@ -34,6 +37,7 @@ export default {
       dns: {
         domain,
         url: 'https://' + domain,
+        available,
         NS: data[0].Answer?.map(({data}) => data), 
         A: data[1].Answer?.map(({data}) => data), 
         AAAA: data[2].Answer?.map(({data}) => data), 
